@@ -1,0 +1,13 @@
+import multer from "multer";
+
+// multer configuration
+const storage = multer.diskStorage({
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+// multer middleware configuration
+export const blogImg = multer({ storage }).single("photo");
+
+export default storage;

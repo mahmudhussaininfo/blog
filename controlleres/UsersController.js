@@ -2,6 +2,29 @@ import md5 from "md5";
 import User from "../model/User.js";
 import { tokenEncode } from "../utility/TokenUtils.js";
 
+//get All Users
+export const getAllUser = async (req, res) => {
+  try {
+    const projection = {
+      $project: {
+        _id: 1,
+        userName: 1,
+        email: 1,
+      },
+    };
+
+    const users = await User.aggregate([projection]);
+    if (users) {
+      return res.status(200).json({
+        message: "All User",
+        users,
+      });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 //register
 export const register = async (req, res) => {
   try {

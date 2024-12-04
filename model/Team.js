@@ -1,17 +1,15 @@
 import mongoose from "mongoose";
 
-const blogSchema = new mongoose.Schema(
+const teamSchema = new mongoose.Schema(
   {
-    title: {
+    userName: {
       type: String,
       required: true,
     },
-    content: {
+    role: {
       type: String,
       required: true,
-    },
-    details: {
-      type: String,
+      default: "user",
     },
     photo: {
       type: String,
@@ -24,6 +22,6 @@ const blogSchema = new mongoose.Schema(
   }
 );
 
-const Blog = mongoose.model("blogs", blogSchema);
+const Team = mongoose.model("teams", teamSchema);
 
-export default Blog;
+export default Team;

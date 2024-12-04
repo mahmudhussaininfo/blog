@@ -1,42 +1,42 @@
-import { findPublicId } from "../helper/helper.js";
-import Blog from "../model/Blog.js";
-import { cloudDelete, cloudUpload } from "../utility/cloudinary.js";
+import Team from "../model/Team.js";
+import { cloudUpload } from "../utility/cloudinary.js";
 
-//get All Blogs
-export const getAllBlogs = async (req, res) => {
+//get All Teams
+export const getAllteams = async (req, res) => {
   try {
-    const blogs = await Blog.find();
-    if (blogs.length > 0) {
+    const teams = await Team.find();
+    if (teams.length > 0) {
       return res.status(200).json({
-        message: "All Blogs",
-        blogs,
+        message: "All Teams found",
+        teams,
       });
+    } else {
+      return res.status(404).json({ message: "No Teams found" });
     }
   } catch (error) {
     console.log(error.message);
   }
 };
 
-// create blog
-export const createBlog = async (req, res) => {
+// create Team
+export const createTeam = async (req, res) => {
   try {
-    const { title, content, details } = req.body;
+    const { userName, role } = req.body;
 
     // upload photo to cloud
-    let brandPic = null;
+    let teamPic = null;
     if (req.file) {
       const file = await cloudUpload(req);
-      brandPic = file.secure_url;
+      teamPic = file.secure_url;
     }
 
-    const blog = await Blog.create({
-      title,
-      content,
-      details,
-      photo: brandPic,
+    const blog = await Team.create({
+      userName,
+      role,
+      photo: teamPic,
     });
     return res.status(200).json({
-      message: "Blog created successfully",
+      message: "Team created successfully",
       blog,
     });
   } catch (error) {

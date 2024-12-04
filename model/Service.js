@@ -1,21 +1,17 @@
 import mongoose from "mongoose";
 
-const blogSchema = new mongoose.Schema(
+const serviceSchema = new mongoose.Schema(
   {
     title: {
       type: String,
       required: true,
     },
-    content: {
+    des: {
       type: String,
       required: true,
     },
-    details: {
+    icon: {
       type: String,
-    },
-    photo: {
-      type: String,
-      default: null,
     },
   },
   {
@@ -24,6 +20,6 @@ const blogSchema = new mongoose.Schema(
   }
 );
 
-const Blog = mongoose.model("blogs", blogSchema);
+const Service = mongoose.model("services", serviceSchema);
 
-export default Blog;
+export default Service;

@@ -8,6 +8,6 @@ const storage = multer.diskStorage({
 });
 
 // multer middleware configuration
-export const blogImg = multer({ storage }).single("photo");
+export const upload = multer({ storage }).single("photo");
 
 export default storage;

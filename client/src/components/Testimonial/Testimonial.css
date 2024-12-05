@@ -1,0 +1,33 @@
+.client-review-section {
+  background-color: #f8f9fa; /* Light background */
+}
+
+.client-review-section h2 {
+  font-weight: bold;
+  color: #007bff; /* Accent color for heading */
+}
+
+.client-review-section .client-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  filter: brightness(0) saturate(100%) invert(21%) sepia(16%) saturate(2313%)
+    hue-rotate(184deg) brightness(85%) contrast(91%);
+}
+
+@media (max-width: 768px) {
+  .client-review-section .client-img {
+    width: 60px;
+    height: 60px;
+  }
+}

@@ -1,0 +1,32 @@
+.service-section {
+  background-color: #f8f9fa; /* Light gray background */
+  color: #333;
+  cursor: pointer;
+}
+
+.service-section h2 {
+  font-weight: bold;
+  color: #007bff; /* Accent color */
+}
+
+.service-card {
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon {
+  font-size: 3rem;
+  color: #000000; /* Icon color */
+}
+
+@media (max-width: 768px) {
+  .service-icon {
+    font-size: 2.5rem;
+  }
+}

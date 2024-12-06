@@ -35,27 +35,33 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "./layout.scss";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <Navbar sticky="top" bg="dark" variant="dark" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">Mr. Mamu's Blog</Navbar.Brand>
+        <Navbar.Brand href="#home" className="logo">
+          <Link to="/">Mr. Mamu's Blog</Link>
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto menu">
-            <Nav.Link className="text-white" href="#home">
+          <Nav className="ms-auto menu d-flex justify-content-between gap-4">
+            <Link to="/" className="text-white" href="#home">
               Home
-            </Nav.Link>
-            <Nav.Link className="text-white" href="#service">
+            </Link>
+            <Link to="/service" className="text-white" href="#service">
               Service
-            </Nav.Link>
-            <Nav.Link className="text-white" href="#services">
+            </Link>
+            <Link to="/blog" className="text-white" href="#services">
               Blog
-            </Nav.Link>
-            <Nav.Link className="text-white" href="#contact">
+            </Link>
+            <Link to="/about" className="text-white">
               About Us
-            </Nav.Link>
+            </Link>
+            <Link to="/contact" className="text-white">
+              Contact Us
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

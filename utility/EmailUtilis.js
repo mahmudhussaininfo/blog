@@ -3,37 +3,30 @@ import {
   EMAIL_HOST,
   EMAIL_PASS,
   EMAIL_PORT,
-  EMAIL_SECURITY,
   EMAIL_USER,
 } from "../config/config.js";
 
-const sendEmail = async (to, sub, msg) => {
+export const sendMail = async ({ from, to, sub, data }) => {
+  //create transport
   const transporter = nodemailer.createTransport({
     host: EMAIL_HOST,
     port: EMAIL_PORT,
-    secure: EMAIL_SECURITY,
     auth: {
       user: EMAIL_USER,
       pass: EMAIL_PASS,
     },
-    tls: {
-      rejectUnauthorized: false,
-    },
   });
 
-  let mailOption = {
-    from: `Ostad Task Manager <${EMAIL_USER}>`,
+  const info = {
+    from: from,
     to: to,
     subject: sub,
-    text: msg,
+    html: data,
   };
 
   try {
-    return await transporter.sendMail(mailOption);
+    return await transporter.sendMail(info);
   } catch (error) {
     console.log(error.message);
   }
 };
-
-//export
-export default sendEmail;

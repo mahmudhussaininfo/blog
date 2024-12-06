@@ -1,0 +1,31 @@
+.contact-us-section {
+  background-color: #f8f9fa;
+  padding: 60px 0;
+}
+
+.contact-us-section h2 {
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-us-section .map-container {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.contact-us-section .form-control {
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.contact-us-section .btn-primary {
+  background-color: #232322;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+}
+
+.contact-us-section .btn-primary:hover {
+  background-color: #035d66;
+  color: #ffffff;
+}

@@ -1,0 +1,41 @@
+.team-section {
+  background-color: #f8f9fa; /* Light gray background */
+  color: #333;
+}
+
+.team-section h2 {
+  font-weight: bold;
+  color: #007bff; /* Accent color */
+}
+
+.team-card {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.team-img {
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+
+.social-links button {
+  font-size: 1.2rem;
+  margin: 0 5px;
+}
+
+.social-links button:hover {
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .team-img {
+    height: 150px;
+  }
+}

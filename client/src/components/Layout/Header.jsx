@@ -32,12 +32,13 @@
 // };
 
 // export default Header;
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import "./layout.scss";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const Header = () => {
+  const [authToken, setAuthToken] = useState(localStorage.getItem("Token"));
   return (
     <Navbar sticky="top" bg="dark" variant="dark" expand="lg">
       <Container>
@@ -62,6 +63,15 @@ const Header = () => {
             <Link to="/contact" className="text-white">
               Contact Us
             </Link>
+            {authToken ? (
+              <Link to="/dashboard" className="text-white">
+                Dashboard
+              </Link>
+            ) : (
+              <Link to="/login" className="text-white">
+                Login
+              </Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -58,3 +58,25 @@ export const deleteBlog = async (req, res) => {
     console.log(error.message);
   }
 };
+
+// update blog
+
+export const updateBlog = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const blog = await Blog.findByIdAndUpdate(id, req.body);
+    if (req.file) {
+      const publicID = findPublicId(blog.photo);
+      await cloudDelete(publicID);
+      const file = await cloudUpload(req);
+      blog.photo = file.secure_url;
+      await blog.save();
+    }
+    return res.status(200).json({
+      message: "Blog updated successfully",
+      blog,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};

@@ -1,0 +1,51 @@
+.team-manager {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #343a40;
+  font-weight: bold;
+}
+
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.team-photo {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.list-group-item {
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item:hover {
+  background-color: #f1f1f1;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+p {
+  color: #555;
+}

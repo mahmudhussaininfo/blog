@@ -1,5 +1,6 @@
+import { findPublicId } from "../helper/helper.js";
 import Team from "../model/Team.js";
-import { cloudUpload } from "../utility/cloudinary.js";
+import { cloudDelete, cloudUpload } from "../utility/cloudinary.js";
 
 //get All Teams
 export const getAllteams = async (req, res) => {
@@ -44,15 +45,41 @@ export const createTeam = async (req, res) => {
   }
 };
 
-// delete blog
-export const deleteBlog = async (req, res) => {
+// delete team
+export const deleteTeam = async (req, res) => {
   try {
     const { id } = req.params;
-    const blog = await Blog.findByIdAndDelete(id);
-    const publicID = findPublicId(blog.photo);
-    await cloudDelete(publicID);
+    const team = await Team.findByIdAndDelete(id);
+    if (team) {
+      const publicID = findPublicId(team.photo);
+      await cloudDelete(publicID);
+      return res.status(200).json({
+        message: "Team deleted successfully",
+      });
+    } else {
+      return res.status(404).json({ message: "Team not found" });
+    }
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
+// update team
+
+export const updateTeam = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const team = await Team.findByIdAndUpdate(id, req.body);
+    if (req.file) {
+      const publicID = findPublicId(team.photo);
+      await cloudDelete(publicID);
+      const file = await cloudUpload(req);
+      team.photo = file.secure_url;
+      await team.save();
+    }
     return res.status(200).json({
-      message: "Blog deleted successfully",
+      message: "Team updated successfully",
+      team,
     });
   } catch (error) {
     console.log(error.message);

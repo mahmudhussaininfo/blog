@@ -20,16 +20,21 @@ router.delete("/user-delete/", UserController.deleteProfile);
 
 // blog routes
 router.get("/allBlogs", BlogController.getAllBlogs);
-router.post("/create-blog", AuthMiddleware, upload, BlogController.createBlog);
-router.delete("/delete-blog/:id", AuthMiddleware, BlogController.deleteBlog);
+router.post("/create-blog", upload, BlogController.createBlog);
+router.put("/update-blog/:id", upload, BlogController.updateBlog);
+router.delete("/delete-blog/:id", BlogController.deleteBlog);
 
 // Services routes
 router.get("/allService", ServiceController.getAllService);
 router.post("/create-service", ServiceController.createService);
+router.put("/update-service/:id", ServiceController.updateService);
+router.delete("/delete-service/:id", ServiceController.deleteService);
 
 // create Teams
 router.get("/allTeams", TeamController.getAllteams);
 router.post("/create-team", upload, TeamController.createTeam);
+router.put("/update-team/:id", upload, TeamController.updateTeam);
+router.delete("/delete-team/:id", TeamController.deleteTeam);
 
 // contact form
 router.post("/contact", ContactController.contactForm);

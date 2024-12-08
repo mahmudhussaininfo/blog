@@ -10,8 +10,6 @@ import { upload } from "../utility/multer.js";
 const router = express.Router();
 
 // users routes
-router.get("/allUser", UserController.getAllUser);
-router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 router.get("/user-profile", AuthMiddleware, UserController.userProfile);
 router.post("/user-update", AuthMiddleware, UserController.updateProfile);

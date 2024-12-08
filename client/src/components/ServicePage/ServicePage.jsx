@@ -23,7 +23,7 @@ const ServicePage = () => {
   return (
     <section className="service-section py-5">
       <Container>
-        <h2 className="text-center mb-5 text-dark">Our Services</h2>
+        <h2 className="text-center mb-5 text-dark">Our Service</h2>
         <Row>
           {services ? (
             services.map((item, index) => {

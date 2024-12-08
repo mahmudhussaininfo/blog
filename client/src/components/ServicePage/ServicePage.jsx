@@ -10,7 +10,7 @@ const ServicePage = () => {
     const serviceApi = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5050/api/allService"
+          "https://blog-im8s.onrender.com/api/allService"
         );
         setServices(response.data.services);
       } catch (error) {

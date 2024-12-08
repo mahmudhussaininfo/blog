@@ -13,6 +13,7 @@ const Dashboard = () => {
   const handleLogout = () => {
     localStorage.removeItem("Token");
     navigate("/login");
+    window.location.reload();
   };
 
   return (

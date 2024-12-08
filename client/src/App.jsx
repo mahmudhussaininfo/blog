@@ -16,10 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route
-          path="/blog"
-          element={authToken ? <Blogs /> : <Navigate to="/login" />}
-        />
+        <Route path="/blog" element={<Blogs />} />
         <Route path="/service" element={<Service />} />
         <Route path="/contact" element={<Contact />} />
         <Route

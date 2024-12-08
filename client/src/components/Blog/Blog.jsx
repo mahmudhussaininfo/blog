@@ -7,7 +7,7 @@ const Blog = () => {
   const [blog, setBlog] = useState([]);
   useEffect(() => {
     const getData = async () => {
-      const response = await axios.get("http://localhost:5050/allBlogs");
+      const response = await axios.get("http://localhost:5050/api/allBlogs");
       console.log(response.data.blogs);
       setBlog(response.data.blogs);
     };

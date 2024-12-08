@@ -24,7 +24,7 @@ const ContactPage = () => {
     setStatus("loading");
     try {
       const response = await axios.post(
-        "https://blog-im8s.onrender.com/api/contact",
+        "http://localhost:5050/api/contact",
         formData
       );
       if (response.status === 200) {

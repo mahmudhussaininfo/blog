@@ -18,7 +18,7 @@ const Login = ({ setAuthToken }) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://blog-im8s.onrender.com/api/login",
+        "http://localhost:5050/api/login",
         credentials
       );
       const { token } = response.data;

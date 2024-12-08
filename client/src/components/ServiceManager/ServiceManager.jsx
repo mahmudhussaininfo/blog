@@ -23,25 +23,18 @@ const ServiceManager = () => {
 
   const fetchServices = async () => {
     const token = localStorage.getItem("Token");
-    const response = await axios.get(
-      "https://blog-im8s.onrender.com/api/allService",
-      {
-        headers: { Authorization: token },
-      }
-    );
+    const response = await axios.get("http://localhost:5050/api/allService", {
+      headers: { Authorization: token },
+    });
     setServices(response.data.services);
   };
 
   const handleCreate = async () => {
     const token = localStorage.getItem("Token");
     try {
-      await axios.post(
-        "https://blog-im8s.onrender.com/api/create-service",
-        newService,
-        {
-          headers: { Authorization: token },
-        }
-      );
+      await axios.post("http://localhost:5050/api/create-service", newService, {
+        headers: { Authorization: token },
+      });
       fetchServices();
       setNewService({ title: "", des: "", icon: "" });
       alert("Service added successfully!");
@@ -58,7 +51,7 @@ const ServiceManager = () => {
 
     try {
       await axios.put(
-        `https://blog-im8s.onrender.com/api/update-service/${editService._id}`,
+        `http://localhost:5050/api/update-service/${editService._id}`,
         newService,
         {
           headers: { Authorization: token },
@@ -88,12 +81,9 @@ const ServiceManager = () => {
   const handleDelete = async (id) => {
     const token = localStorage.getItem("Token");
     try {
-      await axios.delete(
-        `https://blog-im8s.onrender.com/api/delete-service/${id}`,
-        {
-          headers: { Authorization: token },
-        }
-      );
+      await axios.delete(`http://localhost:5050/api/delete-service/${id}`, {
+        headers: { Authorization: token },
+      });
       fetchServices();
     } catch (error) {
       console.error(

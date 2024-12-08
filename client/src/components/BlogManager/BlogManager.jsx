@@ -14,12 +14,9 @@ const BlogManager = () => {
 
   const fetchBlogs = async () => {
     const token = localStorage.getItem("Token");
-    const response = await axios.get(
-      "https://blog-im8s.onrender.com/api/allBlogs",
-      {
-        headers: { Authorization: token },
-      }
-    );
+    const response = await axios.get("http://localhost:5050/api/allBlogs", {
+      headers: { Authorization: token },
+    });
     setBlogs(response.data.blogs);
   };
 
@@ -31,13 +28,9 @@ const BlogManager = () => {
     formData.append("photo", newBlog.photo);
 
     try {
-      await axios.post(
-        "https://blog-im8s.onrender.com/api/create-blog",
-        formData,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+      await axios.post("http://localhost:5050/api/create-blog", formData, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
       fetchBlogs();
       setNewBlog({ title: "", content: "", photo: null });
       alert("Blog created successfully!");
@@ -61,7 +54,7 @@ const BlogManager = () => {
 
     try {
       await axios.put(
-        `https://blog-im8s.onrender.com/api/update-blog/${editBlog._id}`,
+        `http://localhost:5050/api/update-blog/${editBlog._id}`,
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -86,7 +79,7 @@ const BlogManager = () => {
 
   const handleDelete = async (id) => {
     const token = localStorage.getItem("Token");
-    await axios.delete(`https://blog-im8s.onrender.com/api/delete-blog/${id}`, {
+    await axios.delete(`http://localhost:5050/api/delete-blog/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     fetchBlogs();

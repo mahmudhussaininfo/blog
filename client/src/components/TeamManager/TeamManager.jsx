@@ -24,12 +24,9 @@ const TeamManager = () => {
 
   const fetchTeamMembers = async () => {
     const token = localStorage.getItem("Token");
-    const response = await axios.get(
-      "https://blog-im8s.onrender.com/api/allTeams",
-      {
-        headers: { Authorization: token },
-      }
-    );
+    const response = await axios.get("http://localhost:5050/api/allTeams", {
+      headers: { Authorization: token },
+    });
     setTeamMembers(response.data.teams);
   };
 
@@ -41,13 +38,9 @@ const TeamManager = () => {
     formData.append("photo", newMember.photo);
 
     try {
-      await axios.post(
-        "https://blog-im8s.onrender.com/api/create-team",
-        formData,
-        {
-          headers: { Authorization: token },
-        }
-      );
+      await axios.post("http://localhost:5050/api/create-team", formData, {
+        headers: { Authorization: token },
+      });
       fetchTeamMembers();
       setNewMember({ userName: "", role: "", photo: null });
       alert("Team member added successfully!");
@@ -71,7 +64,7 @@ const TeamManager = () => {
 
     try {
       await axios.put(
-        `https://blog-im8s.onrender.com/api/update-team/${editMember._id}`,
+        `http://localhost:5050/api/update-team/${editMember._id}`,
         formData,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -100,7 +93,7 @@ const TeamManager = () => {
 
   const handleDelete = async (id) => {
     const token = localStorage.getItem("Token");
-    await axios.delete(`https://blog-im8s.onrender.com/api/delete-team/${id}`, {
+    await axios.delete(`http://localhost:5050/api/delete-team/${id}`, {
       headers: { Authorization: token },
     });
     fetchTeamMembers();

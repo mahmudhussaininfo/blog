@@ -8,7 +8,9 @@ const Team = () => {
 
   useEffect(() => {
     const fetchTeam = async () => {
-      const response = await axios.get("http://localhost:5050/api/allTeams");
+      const response = await axios.get(
+        "https://blog-im8s.onrender.com/api/allTeams"
+      );
       setTeam(response.data.teams);
     };
     fetchTeam();
